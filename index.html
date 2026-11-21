@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anamika · Portfolio</title>
+<meta name="description" content="Anamika — B.Tech CSE (Health Informatics), VIT Bhopal. Research Intern at IIT Delhi. Projects in AI, computer vision and digital health.">
+<link rel="preload" as="image" href="anamika.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, clinical, quietly confident — a young health-informatics researcher.
+   IDEA: a patient monitor at night — the page has a live ECG trace running through it.
+   PICTURE: her portrait inside a pulsing monitor ring, an ECG line drawn across the hero.
+   COLOUR and TYPE: deep hospital-night blue, cyan monitor glow, one coral pulse accent; Sora + Inter.
+   LAYOUT: centred hero, then full-width bands: about, experience, achievements, projects, research, contact. */
+:root{color-scheme:dark;
+  --bg:#06132a;--bg2:#0a1d3d;--card:#0e2449;--line:#1d3a6b;
+  --ink:#e8f0ff;--mute:#9db2d6;--cyan:#56d6f5;--teal:#3fe0c5;--pulse:#ff6f7d}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Sora,Inter,sans-serif;line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,4vw,42px);margin-bottom:10px}
+h3{font-size:19px}
+a{color:var(--cyan)}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto}
+.band{padding:clamp(48px,7vw,96px) max(5vw,16px)}
+.band.alt{background:var(--bg2)}
+.lede{color:var(--mute);max-width:640px;margin:0 0 36px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(6,19,42,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;padding:12px max(5vw,16px);flex-wrap:wrap}
+nav b{font-family:Sora,Inter,system-ui,sans-serif;font-size:18px;margin-right:auto}
+nav b span{color:var(--pulse)}
+nav .links{display:flex;gap:4px;flex-wrap:wrap}
+nav .links a{color:var(--mute);text-decoration:none;font-size:14px;padding:8px 10px;border-radius:8px}
+nav .links a[aria-current]{color:var(--ink);background:var(--card)}
+nav .links a:hover,nav .links a:focus-visible{color:var(--ink);background:var(--card)}
+
+/* hero (home view) */
+.hero{position:relative;min-height:calc(100vh - 62px);display:grid;align-items:center;padding:40px max(5vw,16px) 70px;overflow:hidden;
+  background:var(--bg)}
+.helix{position:absolute;right:max(2vw,8px);top:50%;transform:translateY(-50%);height:min(86%,620px);width:90px;opacity:.22;z-index:0;pointer-events:none}
+.helix circle{animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.25}}
+.cross{position:absolute;color:var(--teal);opacity:.10;z-index:0;pointer-events:none;animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+.hero-in{position:relative;z-index:2;max-width:1180px;width:100%;margin:0 auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,72px);align-items:center}
+.photo{position:relative}
+.js .photo{opacity:0}
+.js .photo.go{animation:inLeft 1.3s cubic-bezier(.16,.85,.25,1) both}
+.photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 15%;border-radius:28px;border:1px solid var(--line);box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+.photo::before{content:"";position:absolute;inset:-10px;border-radius:34px;background:conic-gradient(from 200deg,var(--cyan),transparent 30%,var(--teal) 55%,transparent 75%,var(--pulse));z-index:-1;filter:blur(2px);opacity:.8;animation:spin 8s linear infinite}
+@keyframes spin{to{filter:blur(2px) hue-rotate(360deg)}}
+.vital{position:absolute;right:-18px;bottom:28px;background:rgba(6,19,42,.92);border:1px solid var(--line);border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:13.5px;animation:rise .8s ease 1.9s both}
+.vital svg{width:18px;height:18px}
+@keyframes inLeft{0%{opacity:0;transform:translateX(-45vw) rotate(-4deg)}60%{opacity:1}100%{opacity:1;transform:none}}
+.hi{font-family:Sora,Inter,system-ui,sans-serif;color:var(--teal);font-size:18px;font-weight:600;margin:0 0 6px;animation:rise .6s ease .3s both}
+.name{font-size:clamp(52px,8.5vw,104px);font-weight:800;letter-spacing:-.02em;display:flex;flex-wrap:wrap}
+.name span{display:inline-block;opacity:0;transform:translateY(60px) rotate(8deg);animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards;
+  background:linear-gradient(180deg,#fff 30%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes rise{to{opacity:1;transform:none}}
+.spec{margin:14px 0 0;font-family:Sora,Inter,system-ui,sans-serif;font-size:clamp(17px,2.1vw,23px);color:var(--mute);overflow:hidden;line-height:1.4}
+.spec .slide{display:inline-block;opacity:0;animation:fromRight 1s cubic-bezier(.2,.8,.2,1) 1.2s forwards}
+.spec .slide.b{animation-delay:1.45s;color:var(--teal);font-weight:600}
+@keyframes fromRight{from{opacity:0;transform:translateX(160px)}to{opacity:1;transform:none}}
+.role{margin-top:20px;display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:rgba(14,36,73,.85);border:1px solid var(--line);font-size:15px;opacity:0;animation:rise .8s ease 1.8s forwards}
+.dot{width:9px;height:9px;flex:none;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 var(--teal);animation:ping 1.6s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.cta{margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:640px;opacity:0;animation:rise .8s ease 2.1s forwards}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:12px;font-weight:600;text-decoration:none;font-size:15px;border:1px solid var(--line);color:var(--ink);background:var(--card);cursor:pointer;font-family:inherit}
+.cta .btn{justify-content:center;width:100%}
+@media(min-width:1240px){.cta{grid-template-columns:repeat(4,minmax(0,1fr));max-width:640px}.contact{max-width:640px}.cta .btn{padding:10px 8px;font-size:14.5px}}
+.btn.primary{background:var(--cyan);color:#04122a;border-color:var(--cyan)}
+.btn:hover{transform:translateY(-2px)}.btn{transition:transform .2s}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.btn.off{opacity:.55;cursor:default}.btn.off:hover{transform:none}
+.contact{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:6px;max-width:640px;opacity:0;animation:rise .8s ease 2.35s forwards}
+.contact small{color:var(--mute);font-size:13px;margin-bottom:2px}
+.contact a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-size:15px;min-height:36px}
+.contact a:hover{color:var(--cyan)}
+.contact svg{width:18px;height:18px;color:var(--cyan);flex:none}
+
+/* views */
+.js .view{display:none}
+.js .view.on{display:block;animation:viewIn .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes viewIn{from{opacity:0;transform:translateY(24px)}}
+.back{margin-bottom:28px}
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:start}
+.facts{display:grid;gap:12px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.fact small{color:var(--mute);display:block;font-size:13px}
+.fact strong{font-family:Sora,Inter,system-ui,sans-serif;font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0;list-style:none}
+.chips.open li{background:rgba(255,111,125,.1);border-color:rgba(255,111,125,.35)}
+.chips li{padding:7px 13px;border-radius:999px;background:rgba(86,214,245,.1);border:1px solid rgba(86,214,245,.3);color:var(--ink);font-size:14px}
+.interests{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px;margin-top:20px}
+.int{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.int h3{font-size:17px;line-height:1.3}
+.int svg{width:36px;height:36px;margin-bottom:10px;color:var(--teal)}
+.int p{margin:6px 0 0;color:var(--mute);font-size:14.5px}
+
+/* experience */
+.exp{position:relative;background:linear-gradient(135deg,#0f2a57,#0a1d3d);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,4vw,40px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center}
+.exp .badge{width:84px;height:84px;border-radius:20px;background:var(--bg);display:grid;place-items:center;font-family:Sora,Inter,system-ui,sans-serif;font-weight:800;color:var(--cyan);font-size:20px;border:1px solid var(--line)}
+.exp .when{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--teal);margin-bottom:6px}
+.exp p{margin:8px 0 0;color:var(--mute)}
+
+/* achievements */
+.posters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.poster{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.poster button{all:unset;cursor:zoom-in;display:block;background:#fff;height:300px;overflow:hidden}
+.poster button img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+.poster button:hover img{transform:scale(1.04)}
+.poster button:focus-visible{outline:2px solid var(--teal);outline-offset:-4px}
+.poster .body{padding:20px 22px 24px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(255,111,125,.14);color:var(--pulse);margin-bottom:10px}
+.poster p{color:var(--mute);margin:8px 0 0;font-size:15px}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(3,10,24,.94);display:none;place-items:center;padding:20px}
+.lb.on{display:grid}
+.lb img{max-height:88vh;width:auto;border-radius:8px}
+.lb button{position:absolute;top:14px;right:14px}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,border-color .3s}
+.proj:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.art{height:170px;background:radial-gradient(80% 90% at 50% 100%,#14386f,#0a1d3d);border-bottom:1px solid var(--line)}
+.art svg{width:100%;height:100%}
+.proj .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.proj .kind{font-size:13px;color:var(--teal);font-weight:600}
+.proj h3{margin:4px 0 10px}
+.proj ul.pts{margin:0 0 14px;padding-left:18px;color:var(--mute);font-size:14.5px}
+.proj ul.pts li{margin-bottom:6px}
+.stack-tags{display:flex;flex-wrap:wrap;gap:6px;margin:auto 0 16px;padding:0;list-style:none}
+.stack-tags li{font-size:13px;padding:4px 9px;border-radius:6px;background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.proj .acts{display:flex;gap:10px;flex-wrap:wrap}
+.proj .btn{font-size:14px;padding:8px 14px}
+
+/* research */
+.paper{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3.5vw,36px);display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(20px,3.5vw,40px);align-items:start}
+.paper .author{margin:0 0 14px;font-size:15px;color:var(--teal)}
+.paper-art svg{width:100%;height:auto}
+.paper p{color:var(--mute);margin:0 0 14px}
+.paper p strong,.paper li strong{color:var(--ink)}
+.paper ul.pts{margin:0 0 16px;padding-left:18px;color:var(--mute);font-size:15px}
+.paper ul.pts li{margin-bottom:6px}
+@media(max-width:700px){.paper{grid-template-columns:minmax(0,1fr)}.paper-art{max-width:170px}}
+
+.research{border:2px dashed var(--line);border-radius:20px;padding:clamp(24px,4vw,44px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center}
+.research svg{width:72px;height:72px;color:var(--cyan)}
+.research p{color:var(--mute);margin:8px 0 0}
+
+footer a{color:var(--mute)}
+footer{text-align:center;color:var(--mute);font-size:13px;padding:26px 16px;border-top:1px solid var(--line)}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:820px){.about,.posters{grid-template-columns:minmax(0,1fr)}
+  .hero-in{grid-template-columns:minmax(0,1fr)}.photo{max-width:330px;margin:0 auto;width:80%}.vital{right:-8px}}
+@media(max-width:600px){
+  .helix{opacity:.12}
+  .projects{grid-template-columns:minmax(0,1fr)}
+  .exp,.research{grid-template-columns:minmax(0,1fr)}
+  nav .links{width:100%;overflow-x:auto;flex-wrap:nowrap}
+  nav .links a{flex:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .helix circle,.cross,.dot,.ring::before,.photo::before{animation:none!important}
+}
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a href="#home" style="text-decoration:none;color:inherit;margin-right:auto"><b>Anamika<span>.</span></b></a>
+    <div class="links">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#achievements">Achievements</a>
+      <a href="#projects">Projects</a><a href="#research">Research</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero view" id="home">
+  <svg class="helix" viewBox="0 0 90 600" aria-hidden="true"><line x1="45.0" y1="10" x2="45.0" y2="10" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="45.0" cy="10" r="4.5" fill="#56d6f5" style="animation-delay:0.0s"/><circle cx="45.0" cy="10" r="4.5" fill="#3fe0c5" style="animation-delay:1.5s"/><line x1="61.8" y1="30" x2="28.2" y2="30" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="61.8" cy="30" r="4.5" fill="#56d6f5" style="animation-delay:0.1s"/><circle cx="28.2" cy="30" r="4.5" fill="#3fe0c5" style="animation-delay:1.6s"/><line x1="74.5" y1="50" x2="15.5" y2="50" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="74.5" cy="50" r="4.5" fill="#56d6f5" style="animation-delay:0.2s"/><circle cx="15.5" cy="50" r="4.5" fill="#3fe0c5" style="animation-delay:1.7s"/><line x1="79.9" y1="70" x2="10.1" y2="70" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="79.9" cy="70" r="4.5" fill="#56d6f5" style="animation-delay:0.3s"/><circle cx="10.1" cy="70" r="4.5" fill="#3fe0c5" style="animation-delay:1.8s"/><line x1="76.8" y1="90" x2="13.2" y2="90" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="76.8" cy="90" r="4.5" fill="#56d6f5" style="animation-delay:0.4s"/><circle cx="13.2" cy="90" r="4.5" fill="#3fe0c5" style="animation-delay:1.9s"/><line x1="65.9" y1="110" x2="24.1" y2="110" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="65.9" cy="110" r="4.5" fill="#56d6f5" style="animation-delay:0.5s"/><circle cx="24.1" cy="110" r="4.5" fill="#3fe0c5" style="animation-delay:2.0s"/><line x1="49.9" y1="130" x2="40.1" y2="130" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="49.9" cy="130" r="4.5" fill="#56d6f5" style="animation-delay:0.6s"/><circle cx="40.1" cy="130" r="4.5" fill="#3fe0c5" style="animation-delay:2.1s"/><line x1="32.7" y1="150" x2="57.3" y2="150" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="32.7" cy="150" r="4.5" fill="#56d6f5" style="animation-delay:0.7s"/><circle cx="57.3" cy="150" r="4.5" fill="#3fe0c5" style="animation-delay:2.2s"/><line x1="18.5" y1="170" x2="71.5" y2="170" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="18.5" cy="170" r="4.5" fill="#56d6f5" style="animation-delay:0.8s"/><circle cx="71.5" cy="170" r="4.5" fill="#3fe0c5" style="animation-delay:2.3s"/><line x1="10.8" y1="190" x2="79.2" y2="190" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="10.8" cy="190" r="4.5" fill="#56d6f5" style="animation-delay:0.9s"/><circle cx="79.2" cy="190" r="4.5" fill="#3fe0c5" style="animation-delay:2.4s"/><line x1="11.4" y1="210" x2="78.6" y2="210" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="11.4" cy="210" r="4.5" fill="#56d6f5" style="animation-delay:1.0s"/><circle cx="78.6" cy="210" r="4.5" fill="#3fe0c5" style="animation-delay:2.5s"/><line x1="20.3" y1="230" x2="69.7" y2="230" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="20.3" cy="230" r="4.5" fill="#56d6f5" style="animation-delay:1.1s"/><circle cx="69.7" cy="230" r="4.5" fill="#3fe0c5" style="animation-delay:2.6s"/><line x1="35.2" y1="250" x2="54.8" y2="250" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="35.2" cy="250" r="4.5" fill="#56d6f5" style="animation-delay:1.2s"/><circle cx="54.8" cy="250" r="4.5" fill="#3fe0c5" style="animation-delay:2.7s"/><line x1="52.5" y1="270" x2="37.5" y2="270" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="52.5" cy="270" r="4.5" fill="#56d6f5" style="animation-delay:1.3s"/><circle cx="37.5" cy="270" r="4.5" fill="#3fe0c5" style="animation-delay:2.8s"/><line x1="68.0" y1="290" x2="22.0" y2="290" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="68.0" cy="290" r="4.5" fill="#56d6f5" style="animation-delay:1.4s"/><circle cx="22.0" cy="290" r="4.5" fill="#3fe0c5" style="animation-delay:2.9s"/><line x1="77.8" y1="310" x2="12.2" y2="310" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="77.8" cy="310" r="4.5" fill="#56d6f5" style="animation-delay:1.5s"/><circle cx="12.2" cy="310" r="4.5" fill="#3fe0c5" style="animation-delay:3.0s"/><line x1="79.6" y1="330" x2="10.4" y2="330" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="79.6" cy="330" r="4.5" fill="#56d6f5" style="animation-delay:1.6s"/><circle cx="10.4" cy="330" r="4.5" fill="#3fe0c5" style="animation-delay:3.1s"/><line x1="72.9" y1="350" x2="17.1" y2="350" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="72.9" cy="350" r="4.5" fill="#56d6f5" style="animation-delay:1.7s"/><circle cx="17.1" cy="350" r="4.5" fill="#3fe0c5" style="animation-delay:3.2s"/><line x1="59.4" y1="370" x2="30.6" y2="370" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="59.4" cy="370" r="4.5" fill="#56d6f5" style="animation-delay:1.8s"/><circle cx="30.6" cy="370" r="4.5" fill="#3fe0c5" style="animation-delay:3.3s"/><line x1="42.4" y1="390" x2="47.6" y2="390" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="42.4" cy="390" r="4.5" fill="#56d6f5" style="animation-delay:1.9s"/><circle cx="47.6" cy="390" r="4.5" fill="#3fe0c5" style="animation-delay:3.4s"/><line x1="26.0" y1="410" x2="64.0" y2="410" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="26.0" cy="410" r="4.5" fill="#56d6f5" style="animation-delay:2.0s"/><circle cx="64.0" cy="410" r="4.5" fill="#3fe0c5" style="animation-delay:3.5s"/><line x1="14.2" y1="430" x2="75.8" y2="430" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="14.2" cy="430" r="4.5" fill="#56d6f5" style="animation-delay:2.1s"/><circle cx="75.8" cy="430" r="4.5" fill="#3fe0c5" style="animation-delay:3.6s"/><line x1="10.0" y1="450" x2="80.0" y2="450" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="10.0" cy="450" r="4.5" fill="#56d6f5" style="animation-delay:2.2s"/><circle cx="80.0" cy="450" r="4.5" fill="#3fe0c5" style="animation-delay:3.7s"/><line x1="14.4" y1="470" x2="75.6" y2="470" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="14.4" cy="470" r="4.5" fill="#56d6f5" style="animation-delay:2.3s"/><circle cx="75.6" cy="470" r="4.5" fill="#3fe0c5" style="animation-delay:3.8s"/><line x1="26.2" y1="490" x2="63.8" y2="490" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="26.2" cy="490" r="4.5" fill="#56d6f5" style="animation-delay:2.4s"/><circle cx="63.8" cy="490" r="4.5" fill="#3fe0c5" style="animation-delay:3.9s"/><line x1="42.7" y1="510" x2="47.3" y2="510" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="42.7" cy="510" r="4.5" fill="#56d6f5" style="animation-delay:2.5s"/><circle cx="47.3" cy="510" r="4.5" fill="#3fe0c5" style="animation-delay:4.0s"/><line x1="59.7" y1="530" x2="30.3" y2="530" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="59.7" cy="530" r="4.5" fill="#56d6f5" style="animation-delay:2.6s"/><circle cx="30.3" cy="530" r="4.5" fill="#3fe0c5" style="animation-delay:4.1s"/><line x1="73.1" y1="550" x2="16.9" y2="550" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="73.1" cy="550" r="4.5" fill="#56d6f5" style="animation-delay:2.7s"/><circle cx="16.9" cy="550" r="4.5" fill="#3fe0c5" style="animation-delay:4.2s"/><line x1="79.7" y1="570" x2="10.3" y2="570" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="79.7" cy="570" r="4.5" fill="#56d6f5" style="animation-delay:2.8s"/><circle cx="10.3" cy="570" r="4.5" fill="#3fe0c5" style="animation-delay:4.3s"/><line x1="77.7" y1="590" x2="12.3" y2="590" stroke="#56d6f5" stroke-width="1.5" opacity=".5"/><circle cx="77.7" cy="590" r="4.5" fill="#56d6f5" style="animation-delay:2.9s"/><circle cx="12.3" cy="590" r="4.5" fill="#3fe0c5" style="animation-delay:4.4s"/></svg><svg class="cross" style="left:44%;top:8%;width:26px;animation-delay:0s" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7z"/></svg><svg class="cross" style="left:52%;top:84%;width:20px;animation-delay:1.5s" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7z"/></svg><svg class="cross" style="left:4%;top:88%;width:22px;animation-delay:3s" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7z"/></svg><svg class="cross" style="left:88%;top:6%;width:18px;animation-delay:2s" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7z"/></svg>
+  <div class="hero-in">
+    <div class="photo">
+      <img src="anamika.jpg" alt="Anamika standing in formal wear outside a glass building">
+    </div>
+    <div>
+      <p class="hi">Hello, I'm</p>
+      <h1 class="name" aria-label="Anamika" id="nm">Anamika</h1>
+      <p class="spec">
+        <span class="slide">B.Tech CSE (Specialisation in Health Informatics)</span><br>
+        <span class="slide b">VIT Bhopal University</span>
+      </p>
+      <div class="role"><span class="dot"></span> Research Intern at IIT Delhi · DRDO project</div>
+      <div class="cta">
+        <a class="btn primary" href="#projects">My projects →</a>
+        <a class="btn" href="#experience">Experience</a>
+        <a class="btn" href="#achievements">Achievements</a>
+        <a class="btn" href="#about">About me</a>
+      </div>
+      <div class="contact">
+        <small>Contact me</small>
+        <a href="mailto:Anamikadeepu89@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Anamikadeepu89@gmail.com</a>
+        <a href="https://www.linkedin.com/in/anamika-39b29128a/"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>linkedin.com/in/anamika-39b29128a</a>
+        <a href="https://github.com/Anamikadeepu"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>github.com/Anamikadeepu</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="band view" id="about">
+  <div class="wrap"><a class="btn back" href="#home">← Back to home</a></div>
+  <div class="wrap about">
+    <div class="rv">
+      <h2>About me</h2>
+      <p class="lede" style="margin:14px 0 16px">I am a Computer Science and Engineering undergraduate specializing in Health Informatics at VIT Bhopal University, currently working as a Research Intern at IIT Delhi.</p>
+      <p class="lede" style="margin-bottom:16px">I am interested in the intersection of healthcare, technology, data and research, particularly in understanding healthcare challenges and exploring computational approaches to address them.</p>
+      <p class="lede" style="margin-bottom:16px">I enjoy working on research-oriented problems that involve data analysis, information gathering, literature reviews, problem-solving and the practical application of technology. I am comfortable working with programming and analytical tools and interested in continuously developing my technical capabilities.</p>
+      <p class="lede" style="margin-bottom:12px">I am exploring opportunities where I can combine analytical thinking, research skills and technical knowledge to contribute to meaningful projects:</p>
+      <ul class="chips open">
+        <li>Healthcare Research</li><li>Research Analysis</li><li>Research Associate</li><li>AI/ML Research</li><li>Healthcare Analytics</li><li>Interdisciplinary Technology Roles</li>
+      </ul>
+      <h3 style="margin:30px 0 0;font-size:18px">Technical skills</h3>
+      <ul class="chips">
+        <li>Java</li><li>Python</li><li>Spring Boot</li><li>React.js</li><li>React Native</li><li>PostgreSQL</li>
+        <li>YOLOv11</li><li>PyTorch</li><li>OpenCV</li><li>MediaPipe</li><li>TensorFlow Lite</li><li>HL7 FHIR</li><li>Docker</li><li>Git</li>
+      </ul>
+    </div>
+    <div class="facts rv">
+      <div class="fact"><small>University</small><strong>VIT Bhopal University</strong><br><span style="color:var(--mute);font-size:14px">B.Tech CSE (Health Informatics) · 2023 – Present</span></div>
+      <div class="fact"><small>CGPA</small><strong>8.40</strong></div>
+      <div class="fact"><small>Now</small><strong>Research Intern, IIT Delhi</strong></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3 class="rv" style="margin-top:56px;font-size:24px">Research interests</h3>
+    <p class="lede rv" style="margin:8px 0 0">My academic background and research interests span:</p>
+    <div class="interests" id="ints"></div>
+  </div>
+</section>
+
+<section class="band view" id="experience">
+  <div class="wrap"><a class="btn back" href="#home">← Back to home</a></div>
+  <div class="wrap">
+    <h2 class="rv">Experience</h2>
+    <p class="lede rv">Where I'm working right now.</p>
+    <div class="exp rv">
+      <div class="badge">IITD</div>
+      <div>
+        <span class="when"><span class="dot"></span> Ongoing</span>
+        <h3 style="font-size:24px">Research Intern · Indian Institute of Technology Delhi</h3>
+        <p>Part of a research project under the Defence Research and Development Organisation (DRDO).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band view" id="achievements">
+  <div class="wrap"><a class="btn back" href="#home">← Back to home</a></div>
+  <div class="wrap">
+    <h2 class="rv">Achievements</h2>
+    <p class="lede rv">I've presented my research poster “Reclaiming Voices: How AI Empowers Stroke Survivors to Communicate” at two events. Tap a poster to see it full size.</p>
+    <div class="posters">
+      <article class="poster rv">
+        <button data-src="poster-industry-conclave.jpg" aria-label="Open Industry Conclave poster"><img src="poster-industry-conclave.jpg" alt="Research poster presented at Industry Conclave, VIT Bhopal" loading="lazy"></button>
+        <div class="body">
+          <span class="tag">4th Place</span>
+          <h3>Industry Conclave · VIT Bhopal</h3>
+          <p>Won 4th place for my research poster on an AI brain–computer interface that turns a stroke survivor's brain signals into speech, delivered by a digital avatar in her own voice.</p>
+        </div>
+      </article>
+      <article class="poster rv">
+        <button data-src="poster-trivision.jpg" aria-label="Open TriVision Summit poster"><img src="poster-trivision.jpg" alt="Research poster presented at TriVision Summit 2025, VIT Chennai" loading="lazy"></button>
+        <div class="body">
+          <span class="tag">Selected for presentation</span>
+          <h3>TriVision Summit 2025 · VIT Chennai</h3>
+          <p>Poster selected for presentation at TriVision: the VIT–RIT–Industry AI &amp; Data Science Summit, held 7–9 January 2025.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band view" id="projects">
+  <div class="wrap"><a class="btn back" href="#home">← Back to home</a></div>
+  <div class="wrap">
+    <h2 class="rv">My projects</h2>
+    <p class="lede rv">Seven projects across healthcare AI, computer vision and full-stack engineering. Live demos are coming soon. The code is on GitHub.</p>
+    <div class="projects" id="pj"></div>
+  </div>
+</section>
+
+<section class="band view" id="research">
+  <div class="wrap"><a class="btn back" href="#home">← Back to home</a></div>
+  <div class="wrap">
+    <h2 class="rv">Research papers</h2>
+    <p class="lede rv">My research in AI for critical care and health informatics.</p>
+    <article class="paper rv">
+      <div class="paper-art" aria-hidden="true">
+        <svg viewBox="0 0 220 220">
+          <rect x="20" y="20" width="180" height="180" rx="18" fill="#06132a" stroke="#1d3a6b" stroke-width="2"/>
+          <defs><radialGradient id="th" cx="50%" cy="42%" r="55%"><stop offset="0" stop-color="#ff6f7d"/><stop offset=".45" stop-color="#f5b84a"/><stop offset=".75" stop-color="#3fe0c5"/><stop offset="1" stop-color="#1a4fa0"/></radialGradient></defs>
+          <ellipse cx="110" cy="80" rx="30" ry="34" fill="url(#th)"/>
+          <path d="M60 196c4-46 22-70 50-70s46 24 50 70z" fill="url(#th)"/>
+          <rect x="80" y="44" width="60" height="74" fill="none" stroke="#56d6f5" stroke-width="2" stroke-dasharray="5 4"/>
+          <rect x="80" y="30" width="62" height="15" fill="#56d6f5"/><text x="84" y="41" font-size="10" font-family="Inter" font-weight="700" fill="#06132a">Grad-CAM</text>
+        </svg>
+      </div>
+      <div>
+        <span class="tag">Research paper · AI in critical care</span>
+        <h3 style="font-size:clamp(20px,2.4vw,26px);margin:6px 0 6px">XAutoNet: AI-Based Thermal Imaging for Early Sepsis Detection in ICU Patients</h3>
+        <p class="author">Author: <strong>Anamika</strong> · VIT Bhopal University</p>
+        <p>Sepsis causes an estimated 11 million deaths a year, and its early signs are easy to miss. This paper proposes <strong>XAutoNet</strong>, a convolutional neural network that reads thermal images of ICU patients, together with their EHR vitals, to predict sepsis <strong>up to 6 hours before onset</strong>. It watches for skin-temperature changes such as cooling in the hands and feet alongside a fever in the body's core.</p>
+        <ul class="pts">
+          <li>Combines thermal-image patterns with clinical data (heart rate, blood pressure, oxygen saturation) for a fuller risk picture.</li>
+          <li>Uses <strong>Grad-CAM</strong> heatmaps so clinicians can see which regions drove each alert, so the model is not a black box.</li>
+          <li>Proposes a multi-centre prospective study with an embedded RCT, reported to CONSORT-AI standards, evaluated by AUC-ROC, PR-AUC, sensitivity and specificity.</li>
+        </ul>
+        <ul class="stack-tags"><li>Deep learning</li><li>CNN</li><li>Thermal imaging</li><li>Sepsis detection</li><li>Explainable AI</li></ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer>© 2026 Anamika · <a href="mailto:Anamikadeepu89@gmail.com">Anamikadeepu89@gmail.com</a> · <a href="https://www.linkedin.com/in/anamika-39b29128a/">LinkedIn</a> · <a href="https://github.com/Anamikadeepu">GitHub</a></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Poster preview">
+  <button class="btn" id="lbx">Close ✕</button>
+  <img id="lbi" alt="Poster full size">
+</div>
+
+<script>
+{
+document.documentElement.classList.add('js');
+
+/* animated name letters */
+const nm=document.getElementById('nm');
+nm.innerHTML=[...nm.textContent].map((c,i)=>`<span aria-hidden="true" style="animation-delay:${.35+i*.08}s">${c}</span>`).join('');
+
+/* interests */
+const ico={
+ epi:'<path d="M6 30h6l4-10 6 20 5-14 3 4h8"/><circle cx="26" cy="10" r="4"/>',
+ ph:'<path d="M18 4v28M4 18h28" stroke-width="5"/>',
+ ai:'<rect x="9" y="9" width="18" height="18" rx="3"/><path d="M14 4v5M22 4v5M14 27v5M22 27v5M4 14h5M4 22h5M27 14h5M27 22h5"/>',
+ img:'<circle cx="18" cy="18" r="13"/><path d="M11 15c3-4 11-4 14 0M11 22c3 3 11 3 14 0M18 5v26"/>',
+ code:'<path d="M12 10l-8 8 8 8M24 10l8 8-8 8M20 6l-4 24"/>',
+ data:'<path d="M6 30V6M6 30h24"/><path d="M11 24v-6M17 24V12M23 24v-9M29 24V9"/>',
+ bio:'<circle cx="18" cy="6" r="3"/><path d="M18 9v10M18 13l-7 5M18 13l7 3M18 19l-5 11M18 19l5 11"/>',
+ dig:'<rect x="10" y="4" width="16" height="28" rx="3"/><path d="M18 12v8M14 16h8"/>',
+ fhir:'<circle cx="8" cy="18" r="4"/><circle cx="28" cy="8" r="4"/><circle cx="28" cy="28" r="4"/><path d="M12 16l12-6M12 20l12 6"/>',
+ bci:'<path d="M10 26c-5-2-6-10-1-13 0-6 8-9 12-5 5-3 11 1 10 7 4 3 2 10-3 11"/><path d="M14 30l4-6 4 6"/>'
+};
+const ints=[
+ ['ph','Healthcare Research and Health Informatics'],
+ ['ai','AI/ML Applications in Healthcare'],
+ ['epi','Epidemiology and Public Health'],
+ ['bci','Neuroscience and Computational Neuroscience'],
+ ['data','Biomedical Data Analytics'],
+ ['bio','Computational Healthcare and Biomechanics'],
+ ['dig','Healthcare Technology and Digital Health']
+];
+document.getElementById('ints').innerHTML=ints.map(([k,t])=>`<div class="int rv"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ico[k]}</svg><h3>${t}</h3></div>`).join('');
+
+/* project illustrations (inline SVG) */
+const A={
+ stroke:`<g stroke="#56d6f5" stroke-width="4" stroke-linecap="round" fill="none"><path d="M200 40v50M200 90l-26 44M200 90l26 44M200 55l-38 22M200 55l42-14"/></g><g fill="#3fe0c5"><circle cx="200" cy="28" r="12"/><circle cx="200" cy="55" r="5"/><circle cx="162" cy="77" r="5"/><circle cx="242" cy="41" r="5"/><circle cx="200" cy="90" r="5"/><circle cx="174" cy="134" r="5"/><circle cx="226" cy="134" r="5"/></g><path d="M216 50a18 18 0 0 1 4 -10" stroke="#ff6f7d" stroke-width="3" fill="none"/><text x="250" y="62" fill="#ff6f7d" font-size="13" font-family="Inter">joint angle</text><rect x="70" y="40" width="70" height="90" rx="10" fill="none" stroke="#1d3a6b" stroke-width="3"/><path d="M82 110l12-14 10 8 14-22 12 10" stroke="#3fe0c5" stroke-width="3" fill="none"/>`,
+ medipass:`<rect x="150" y="14" width="100" height="146" rx="16" fill="#06132a" stroke="#56d6f5" stroke-width="3"/><g fill="#e8f0ff" id="qr">${(()=>{let s='',seed=7;for(let y=0;y<9;y++)for(let x=0;x<9;x++){seed=(seed*37+11)%101;const f=(x<3&&y<3)||(x>5&&y<3)||(x<3&&y>5);if(f?((x%3!==1)||(y%3!==1)):seed%2)s+=`<rect x="${164+x*8}" y="${40+y*8}" width="7" height="7"/>`}return s})()}</g><text x="200" y="136" text-anchor="middle" fill="#3fe0c5" font-size="12" font-family="Inter">Emergency pass</text><path d="M290 70h20l6-12 8 24 6-12h20" stroke="#ff6f7d" stroke-width="3" fill="none"/><rect x="60" y="56" width="66" height="44" rx="8" fill="none" stroke="#1d3a6b" stroke-width="3"/><text x="93" y="83" text-anchor="middle" fill="#9db2d6" font-size="12" font-family="Inter">FHIR</text>`,
+ tumor:`<path d="M140 120c-30-6-38-48-14-64-4-30 34-46 58-30 22-18 64-8 66 22 30 6 34 50 8 64-8 18-40 22-56 10-20 12-52 10-62-2z" fill="#14386f" stroke="#56d6f5" stroke-width="3"/><path d="M200 34v110M160 60c14 10 14 24 0 34M240 60c-14 10-14 24 0 34" stroke="#1d3a6b" stroke-width="3" fill="none"/><circle cx="226" cy="78" r="12" fill="#ff6f7d" opacity=".75"/><rect x="206" y="58" width="40" height="40" fill="none" stroke="#ff6f7d" stroke-width="2.5"/><rect x="206" y="44" width="46" height="15" fill="#ff6f7d"/><text x="210" y="55" fill="#06132a" font-size="11" font-weight="700" font-family="Inter">tumor</text>`,
+ poshan:`<g font-family="Inter"><path d="M90 120a60 60 0 0 1 120 0" fill="none" stroke="#1d3a6b" stroke-width="16"/><path d="M90 120a60 60 0 0 1 30 -52" fill="none" stroke="#3fe0c5" stroke-width="16"/><path d="M120 68a60 60 0 0 1 60 0" fill="none" stroke="#f5b84a" stroke-width="16"/><path d="M180 68a60 60 0 0 1 30 52" fill="none" stroke="#ff6f7d" stroke-width="16"/><path d="M150 120l34 -38" stroke="#e8f0ff" stroke-width="4" stroke-linecap="round"/><circle cx="150" cy="120" r="7" fill="#e8f0ff"/><text x="150" y="146" text-anchor="middle" fill="#9db2d6" font-size="12">Risk score</text><g fill="#56d6f5"><rect x="250" y="96" width="14" height="30" rx="3"/><rect x="270" y="80" width="14" height="46" rx="3"/><rect x="290" y="62" width="14" height="64" rx="3"/><rect x="310" y="48" width="14" height="78" rx="3"/></g><text x="287" y="146" text-anchor="middle" fill="#9db2d6" font-size="12">Growth</text><text x="287" y="36" text-anchor="middle" fill="#3fe0c5" font-size="12" font-weight="600">हिंदी / EN</text></g>`,
+ athlete:`<rect x="70" y="24" width="260" height="122" rx="6" fill="#0d3a3a" stroke="#3fe0c5" stroke-width="2"/><path d="M200 24v122" stroke="#3fe0c5" stroke-width="2"/><circle cx="200" cy="85" r="20" fill="none" stroke="#3fe0c5" stroke-width="2"/><rect x="70" y="60" width="26" height="50" fill="none" stroke="#3fe0c5" stroke-width="2"/><rect x="304" y="60" width="26" height="50" fill="none" stroke="#3fe0c5" stroke-width="2"/><g fill="#56d6f5"><circle cx="130" cy="60" r="6"/><circle cx="150" cy="110" r="6"/><circle cx="175" cy="80" r="6"/></g><g fill="#ff6f7d"><circle cx="240" cy="70" r="6"/><circle cx="260" cy="105" r="6"/><circle cx="285" cy="80" r="6"/></g><path d="M130 60l45 20 65-10" stroke="#e8f0ff" stroke-dasharray="4 4" stroke-width="1.5" fill="none"/>`,
+ resq:`<path d="M40 120c60-40 100 10 160-20s110-30 160 0" stroke="#1d3a6b" stroke-width="16" fill="none" stroke-linecap="round"/><g><circle cx="200" cy="70" r="30" fill="none" stroke="#ff6f7d" stroke-width="2" opacity=".5"/><circle cx="200" cy="70" r="46" fill="none" stroke="#ff6f7d" stroke-width="1.5" opacity=".25"/><path d="M200 96c-16-18-24-30-24-42a24 24 0 0 1 48 0c0 12-8 24-24 42z" fill="#ff6f7d"/><text x="200" y="60" text-anchor="middle" fill="#06132a" font-size="12" font-weight="700" font-family="Inter">SOS</text></g><path d="M110 112c-8-9-12-15-12-21a12 12 0 0 1 24 0c0 6-4 12-12 21z" fill="#56d6f5"/><path d="M300 104c-8-9-12-15-12-21a12 12 0 0 1 24 0c0 6-4 12-12 21z" fill="#3fe0c5"/><text x="110" y="134" text-anchor="middle" fill="#9db2d6" font-size="11" font-family="Inter">Responder</text><text x="300" y="126" text-anchor="middle" fill="#9db2d6" font-size="11" font-family="Inter">Shelter</text>`,
+ patch:`<rect x="150" y="10" width="100" height="150" rx="40" fill="#14386f"/><rect x="165" y="52" width="70" height="66" rx="18" fill="#06132a" stroke="#56d6f5" stroke-width="3"/><path d="M172 86h12l5-12 8 24 6-12h20" stroke="#ff6f7d" stroke-width="2.5" fill="none"/><g font-family="Inter" font-size="12" fill="#9db2d6"><text x="270" y="60">Heart rate</text><text x="270" y="88">Respiration</text><text x="270" y="116">Temperature</text></g><g fill="#3fe0c5"><circle cx="262" cy="56" r="4"/><circle cx="262" cy="84" r="4"/><circle cx="262" cy="112" r="4"/></g><text x="60" y="90" fill="#3fe0c5" font-size="13" font-family="Sora" font-weight="700">STRESS</text><text x="60" y="108" fill="#9db2d6" font-size="12" font-family="Inter">ML prediction</text>`
+};
+
+const P=[
+ {a:'stroke',k:'Healthcare AI · Android',t:'AI-Based Stroke Rehabilitation App',
+  pts:['An Android app that lets stroke patients do physiotherapy exercises at home, using real-time, camera-based posture detection.','Uses MediaPipe pose estimation to track body landmarks and calculate joint angles, giving instant visual and voice feedback on how accurately each exercise is done.','A patient dashboard tracks exercise progress, recovery stage and daily physiotherapy routines.'],
+  s:['Java','Android','MediaPipe','OpenCV','TensorFlow Lite'],repo:''},
+ {a:'medipass',k:'Digital Health · Full-stack',t:'MediPass: QR-Based Emergency Health Passport',
+  pts:['A patient-controlled digital health passport: patients create temporary QR passes, and responders scan them to see an emergency summary (allergies, medications, conditions, contacts) without needing an account.','Built in layers: a Spring Boot REST API, PostgreSQL for metadata and audit logs, HAPI FHIR R4 for clinical data, and a React Native/Expo patient app.','Patients choose what to share. Access uses JWT authentication, and passes can expire, be revoked or be rotated. Every access is logged for the patient to review.','Runs on Docker Compose, with automated tests and a GitHub Actions CI pipeline. Only synthetic patient data is used.'],
+  s:['Spring Boot','React Native','PostgreSQL','HAPI FHIR','JWT','Docker'],repo:''},
+ {a:'tumor',k:'Medical Imaging · Deep Learning',t:'Brain Tumor Detection using YOLOv11',
+  pts:['Fine-tuned a pre-trained YOLOv11 model (transfer learning) to detect and locate brain tumours in MRI scans.','Mosaic data augmentation improved how well the model generalises, reaching 92% mAP and 95% detection accuracy.','A Streamlit web app lets users upload an MRI image and see the detected tumour right away.'],
+  s:['Python','YOLOv11','PyTorch','OpenCV','Streamlit'],repo:''},
+ {a:'poshan',k:'Public Health · AI + Web',t:'Poshan Mithra: AI-Driven Malnutrition Screening Platform',
+  pts:['A community health web platform for early malnutrition risk screening in Madhya Pradesh, built as an EPICS community-service project with a six-member team.','An XGBoost model uses anthropometric, dietary and socioeconomic indicators (age, weight, height, diet) to sort children into risk categories in real time. A rule-based fallback keeps screening running if the API goes offline.','A FastAPI backend and Supabase (PostgreSQL) power an admin dashboard where Anganwadi workers and district health officers see risk heatmaps, district-wise metrics and nearby health centres.','Mobile-first and bilingual (Hindi and English), with simple guided forms for first-time users.'],
+  s:['Python','XGBoost','FastAPI','Supabase','PostgreSQL','HTML5 / JS'],repo:''},
+ {a:'patch',k:'Wearable · IoT + ML',t:'PatchEZ: AI-Based Stress Detection Wearable',
+  pts:['A wearable stress monitor that reads physiological signals: heart rate, respiration and temperature.','Machine-learning models predict stress in real time.','A dashboard shows health data, device status and drug-delivery logs.'],
+  s:['Python','Node.js','Express.js','React.js','MongoDB','IoT'],repo:''},
+ {a:'resq',k:'Disaster Response · Full-stack + AI',t:'ResQ: Disaster Management Platform',
+  pts:['A full-stack disaster-response platform with three role-based portals (Citizen, Responder, Admin) for real-time incident reporting, SOS dispatch and rescue coordination.','Spring Boot REST APIs and PostgreSQL manage incidents, SOS requests, shelters, hospitals and rescue-team tracking.','A React.js frontend with an AI/RAG module that writes real-time summaries of high-risk areas for administrators.'],
+  s:['React.js','Spring Boot','PostgreSQL','REST APIs','AI / RAG'],repo:''},
+ {a:'athlete',k:'Sports Analytics · Full-stack',t:'AthleteX: Football Intelligence Platform',
+  pts:['A full-stack platform with a Spring Boot REST API and a PostgreSQL database for match, player and performance data.','An interactive React.js dashboard with live player search, match statistics and team analytics.','The backend is deployed on Render with managed PostgreSQL, through a CI/CD pipeline from GitHub.'],
+  s:['Java','Spring Boot','React.js','PostgreSQL','Render'],repo:''}
+];
+const GH='https://github.com/Anamikadeepu';
+document.getElementById('pj').innerHTML=P.map(p=>`<article class="proj rv">
+ <div class="art"><svg viewBox="0 0 400 170" aria-hidden="true">${A[p.a]}</svg></div>
+ <div class="body"><span class="kind">${p.k}</span><h3>${p.t}</h3>
+ <ul class="pts">${p.pts.map(x=>`<li>${x}</li>`).join('')}</ul>
+ <ul class="stack-tags">${p.s.map(x=>`<li>${x}</li>`).join('')}</ul>
+ <div class="acts"><a class="btn" href="${p.repo||GH}">Code on GitHub ↗</a>${p.demo?`<a class="btn primary" href="${p.demo}">Live demo ↗</a>`:`<span class="btn off">Live demo: soon</span>`}</div>
+ </div></article>`).join('');
+
+/* photo slide-in: start only when the photo has loaded */
+const ph=document.querySelector('.photo'),phi=ph.querySelector('img');
+const go=()=>ph.classList.add('go');
+if(phi.complete&&phi.naturalWidth)go();else{phi.addEventListener('load',go);phi.addEventListener('error',go);setTimeout(go,3000)}
+/* page router */
+const views=[...document.querySelectorAll('.view')],navs=[...document.querySelectorAll('nav .links a')];
+const show=()=>{const id=(location.hash||'#home').slice(1);const v=views.find(x=>x.id===id)||views[0];
+  views.forEach(x=>x.classList.toggle('on',x===v));navs.forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+v.id));
+  if(v.id==='home'&&phi.complete){ph.classList.remove('go');void ph.offsetWidth;go()}
+  window.scrollTo(0,0);v.querySelectorAll('.rv').forEach(el=>el.classList.remove('in'));requestAnimationFrame(()=>v.querySelectorAll('.rv').forEach(el=>io?io.observe(el):el.classList.add('in')));};
+/* scroll reveal */
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1}):null;
+document.querySelectorAll('.rv').forEach((el,i)=>el.style.transitionDelay=(i%3)*90+'ms');
+addEventListener('hashchange',show);show();
+
+/* poster lightbox */
+const lb=document.getElementById('lb'),lbi=document.getElementById('lbi');
+document.querySelectorAll('.poster button').forEach(b=>b.addEventListener('click',()=>{lbi.src=b.dataset.src;lb.classList.add('on');document.getElementById('lbx').focus()}));
+const close=()=>lb.classList.remove('on');
+document.getElementById('lbx').addEventListener('click',close);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+}
+</script>
+</body>
+</html>
